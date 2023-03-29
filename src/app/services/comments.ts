@@ -3,7 +3,12 @@ import { api } from './api'
 export interface IComment {
     id: string
     ArticleId: string
-    createdAt: Date | string
+    name: string
+    comment: string
+}
+
+export interface PostCommentParams {
+    ArticleId: string
     name: string
     comment: string
 }
@@ -26,6 +31,14 @@ export const commentApi = api.injectEndpoints({
                 ...result.map(({id}) => ({ type: 'Comments', id } as const)),
                 { type: 'Comments' as const, id: 'LIST' }
             ]
+        }),
+        addComment: build.mutation<void, PostCommentParams>({
+            query: payload => ({
+                url: `Article/${payload.ArticleId}/Comment`,
+                method: 'POST',
+                body: {...payload}
+            }),
+            invalidatesTags: () => [{type: 'Comments', id: 'LIST'} ]
         }),
         deleteComment: build.mutation<void, DeleteCommentProps>({
             query: payload => ({
@@ -65,6 +78,7 @@ export const commentApi = api.injectEndpoints({
 export const {
     useGetCommentsQuery,
     useDeleteCommentMutation,
+    useAddCommentMutation,
     useEditCommentMutation,
 } = commentApi
 

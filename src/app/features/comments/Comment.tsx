@@ -21,14 +21,14 @@ export const Comment = (comment: IComment) => {
     const [showEdit, setShowEdit] = useState(false)
 
     const { comment: commentSelected} = useGetCommentById({id: comment.id, articleId: comment.ArticleId})
-    const [newComment, setNewComment] = useState(commentSelected?.comment || '')
+    const [editedComment, setEditedComment] = useState(commentSelected?.comment || '')
 
     function handleEditClick() {
         setShowEdit(true)
     }
     function handleSubmit() {
         setShowEdit(false)
-        editComment({articleId: comment.ArticleId, id: comment.id, comment: newComment})
+        editComment({articleId: comment.ArticleId, id: comment.id, comment: editedComment})
     }
 
     return (
@@ -43,7 +43,7 @@ export const Comment = (comment: IComment) => {
                     label="Comment"
                     multiline
                     maxRows={4}
-                    onChange={e => setNewComment(e.target.value)} value={newComment} />
+                    onChange={e => setEditedComment(e.target.value)} value={editedComment} />
                 <Stack direction="row" justifyContent="center" padding="5px 5px 0 5px">
                     <Button onClick={handleSubmit}>Submit</Button>
                     <Button onClick={() => setShowEdit(false)}>Cancel</Button>
