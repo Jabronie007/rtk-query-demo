@@ -1,22 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import { store } from "./app/store";
+import { Articles } from "./app/features/articles/Articles";
+import { Provider } from "react-redux";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Provider store={store}>
+          <p>
+            RTK Query Simple App
+          </p>
+          <a
+            className="App-link"
+            href="https://redux-toolkit.js.org/rtk-query/overview"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn RTK Query
+          </a>
+          <Articles />
+        </Provider>
       </header>
     </div>
   );
