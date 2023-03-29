@@ -28,7 +28,7 @@ export const Articles = () => {
     if (isLoading) return <>Loading</>
     if (!articles) return <>No articles</>
 
-    return <Box width="50%">
+    return <Box width="75%">
         {articles.map((article) => (
             <Paper elevation={1} sx={{margin: "15px"}} key={article.id}>
                 <AuthorHeader>{article.name}</AuthorHeader>
