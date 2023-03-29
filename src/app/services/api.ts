@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react'
-import { RootState } from "../store";
 
 const baseQuery = fetchBaseQuery({
     baseUrl: 'https://63cedc05fdfe2764c72bd7c1.mockapi.io/api/v1/',

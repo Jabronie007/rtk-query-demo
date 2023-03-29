@@ -32,7 +32,7 @@ export const commentApi = api.injectEndpoints({
                 url: `Article/${payload.articleId}/Comment/${payload.id}`,
                 method: 'DELETE',
             }),
-            invalidatesTags: result => [{type: 'Comments', id: 'LIST'} ]
+            invalidatesTags: () => [{type: 'Comments', id: 'LIST'} ]
         }),
         editComment: build.mutation<void, EditCommentProps>({
             query: payload => ({
