@@ -12,7 +12,7 @@ const baseQuery = fetchBaseQuery({
 const baseQueryWithRetry = retry(baseQuery, { maxRetries: 6 })
 
 export const api = createApi({
-    reducerPath: 'splitApi',
+    reducerPath: 'demoApi',
     baseQuery: baseQueryWithRetry,
     tagTypes: ['Comments', 'Articles'],
     endpoints: () => ({})
